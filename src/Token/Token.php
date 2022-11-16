@@ -61,32 +61,8 @@ final class Token
         self::COMMENT_END_TYPE   => self::COMMENT_END_TYPE,
     ];
 
-    private int $type;
-
-    private int $line;
-
-    private int $position;
-
-    private string $filename;
-
-    private string $value;
-
-    private ?Token $relatedToken;
-
-    public function __construct(
-        int $type,
-        int $line,
-        int $position,
-        string $filename,
-        string $value = '',
-        ?self $relatedToken = null
-    ) {
-        $this->type = $type;
-        $this->line = $line;
-        $this->position = $position;
-        $this->filename = $filename;
-        $this->value = $value;
-        $this->relatedToken = $relatedToken;
+    public function __construct(private int $type, private int $line, private int $position, private string $filename, private string $value = '', private ?\TwigCsFixer\Token\Token $relatedToken = null)
+    {
     }
 
     public function getType(): int

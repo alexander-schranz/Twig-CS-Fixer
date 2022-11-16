@@ -25,18 +25,12 @@ use TwigCsFixer\Exception\CannotWriteCacheException;
  */
 final class FileCacheManager implements CacheManagerInterface
 {
-    private CacheFileHandlerInterface $handler;
-
-    private Signature $signature;
-
     private Cache $cache;
 
     private Directory $cacheDirectory;
 
-    public function __construct(CacheFileHandlerInterface $handler, Signature $signature)
+    public function __construct(private CacheFileHandlerInterface $handler, private Signature $signature)
     {
-        $this->handler = $handler;
-        $this->signature = $signature;
         $this->cacheDirectory = new Directory(\dirname($handler->getFile()));
 
         $this->readCache();

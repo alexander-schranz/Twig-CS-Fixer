@@ -23,10 +23,6 @@ final class Fixer
 
     private string $eolChar = "\n";
 
-    private Ruleset $ruleset;
-
-    private TokenizerInterface $tokenizer;
-
     /**
      * The list of tokens that make up the file contents.
      *
@@ -81,10 +77,8 @@ final class Fixer
      */
     private int $numFixes = 0;
 
-    public function __construct(Ruleset $ruleset, TokenizerInterface $tokenizer)
+    public function __construct(private Ruleset $ruleset, private TokenizerInterface $tokenizer)
     {
-        $this->ruleset = $ruleset;
-        $this->tokenizer = $tokenizer;
     }
 
     /**
